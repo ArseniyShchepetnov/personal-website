@@ -1,0 +1,64 @@
+$theme-colors: (
+    "empty": #120907,
+    "dark": #333366,
+    "light": #333399,
+    "primary": #999966,
+    "secondary": #CC66FF,
+    "card": #FFCC66,
+    "menu": #000033,
+
+);
+
+
+//.color1 {color: #120907;}
+// .color2 {color: #121f35;}
+// .color3 {color: #145a87;}
+// .color4 {color: #2098d9;}
+// .color5 {color: #20d1d8;}
+
+.header-style {
+    display: flex;
+    flex-direction: row;
+    justify-content: 'flex-end';
+}
+
+.social-media-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: 'flex-end';
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.social-media-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.experience-summary-card-text {
+    overflow: hidden;
+    width: 200px;
+}
+
+body {
+    height: 100%;
+}
+
+
+
+.page-container {
+    height: 100vh;
+    max-width: '100%' //This will make container to take screen width
+}
+
+.linkText {
+    color: white;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+}
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
