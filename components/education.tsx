@@ -22,10 +22,10 @@ function UniversityCard(item: {
 
 function UniversityList(universities: any[]) {
   return (
-    <Container className="d-flex flex-col">
+    <Row className="justify-content-center">
       {universities.map((item) => {
         return (
-          <Col style={{ margin: "1rem" }}>
+          <Col xs={4} md={3}>
             <UniversityCard
               degree={item.degree}
               specialization={item.specialization}
@@ -36,17 +36,20 @@ function UniversityList(universities: any[]) {
           </Col>
         );
       })}
-    </Container>
+    </Row>
   );
 }
 
 export default function Education() {
   return (
-    <Container className="d-flex flex-column page-container">
-      <Row style={{ marginBottom: "1rem", marginTop: "6rem" }}>
+    <Container
+      className="d-flex flex-column justify-content-center page-container"
+      fluid
+    >
+      <Row>
         <h1>Education</h1>
       </Row>
-      <Row>{UniversityList(educationUniversity)}</Row>
+      {UniversityList(educationUniversity)}
     </Container>
   );
 }

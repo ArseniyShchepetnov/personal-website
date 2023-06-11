@@ -48,7 +48,7 @@ export const otherEmployment = [
     {
         id_: 2,
         icon: "",
-        title: "Engineer-programmer (3+ years)",
+        title: "C++ and PostgreSQL Developer(3+ years)",
         text: "Frontend and backend development for database application with C++, Qt and PostgreSQL.",
         dates: "",
         href: "",
@@ -56,7 +56,7 @@ export const otherEmployment = [
     {
         id_: 3,
         icon: "",
-        title: "Research Engineer",
+        title: "Research Engineer in Theoretical Physics",
         text: "Numerical modeling of physical processes in the field of quantum physics.",
         dates: "",
         href: "",
@@ -64,7 +64,7 @@ export const otherEmployment = [
     {
         id_: 4,
         icon: "",
-        title: "Physics Teacher",
+        title: "Physics Teacher at School",
         text: "Taught physics in high school.",
         dates: "",
         href: "",

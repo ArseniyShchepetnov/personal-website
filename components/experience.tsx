@@ -16,7 +16,7 @@ function CarouselExperience(array: any[]) {
         return (
           <Carousel.Item
             style={{
-              paddingBottom: "2rem",
+              paddingBottom: "3rem",
               paddingLeft: "5rem",
               paddingRight: "5rem",
             }}
@@ -36,51 +36,45 @@ function CarouselExperience(array: any[]) {
 export default function EmploymentHistory() {
   return (
     <Container
-      className="page-container text-bg-dark d-flex flex-column justify-content-center"
+      className="text-bg-dark d-flex flex-column justify-content-center"
       fluid
     >
-      <Container style={{ marginTop: "3rem" }}>
-        <Row>
-          <h1>Experience</h1>
-        </Row>
-        <Row ys={5} style={{ marginBottom: "1rem" }}>
-          <Col></Col>
-          <Col xs={10}>
-            {employment.map((element) => {
-              return (
-                <EmploymentCard
-                  icon={element.icon}
-                  title={element.title}
-                  text={element.text}
-                  dates={element.dates}
-                  href={element.href}
-                ></EmploymentCard>
-              );
-            })}
-          </Col>
-          <Col></Col>
-        </Row>
-        <Row>
-          <Col></Col>
-          <Col xs={10}>
-            <hr
-              style={{
-                background: "card",
-                color: "card",
-              }}
-            />
-          </Col>
-          <Col></Col>
-        </Row>
-        <Row>
-          <h4 className="text-center">Other experience:</h4>
-        </Row>
-        <Row>
-          <Col></Col>
-          <Col xs={8}>{CarouselExperience(otherEmployment)}</Col>
-          <Col></Col>
-        </Row>
-      </Container>
+      <Row style={{ marginTop: "6rem" }}>
+        <h1>Experience</h1>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs={12} md={10}>
+          {employment.map((element) => {
+            return (
+              <EmploymentCard
+                icon={element.icon}
+                title={element.title}
+                text={element.text}
+                dates={element.dates}
+                href={element.href}
+              ></EmploymentCard>
+            );
+          })}
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs={8}>
+          <hr
+            style={{
+              background: "card",
+              color: "card",
+            }}
+          />
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <h4 className="text-center">Other experience:</h4>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs={12} md={8}>
+          {CarouselExperience(otherEmployment)}
+        </Col>
+      </Row>
     </Container>
   );
 }

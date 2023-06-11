@@ -10,14 +10,17 @@ const myTitle = (
 
 export default function Home() {
   return (
-    <Container className="d-flex flex-column justify-content-center page-container">
+    <Container
+      className="d-flex flex-column justify-content-center page-container"
+      fluid
+    >
       <Row>
         <Col>
           <Row className="d-flex flex-column">
             <div>Hi! My name is {myName}</div>
             <div>and I am a {myTitle}</div>
           </Row>
-          <Row style={{ marginTop: "1rem" }}>
+          <Row>
             <p>
               I am not a Frontend developer but I created this website by myself
               with JavaScript and React for better connection experience.

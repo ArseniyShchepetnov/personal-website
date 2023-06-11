@@ -9,7 +9,7 @@ import Education from "../components/education";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="text-bg-dark d-flex flex-column">
+    <div className="text-bg-dark d-flex flex-column justify-content-space-between">
       <Header />
       <section id="home"></section>
       <Home />

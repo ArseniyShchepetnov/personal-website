@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { employment, otherEmployment } from "../data/employment";
 import CarouselExperience from "./experience";
 
-function EmploymentCard(props: {
+function EmploymentCard(employment: {
   icon: string;
   title: string;
   text: string;
@@ -14,9 +14,8 @@ function EmploymentCard(props: {
 }) {
   return (
     <Container>
-      <Row>
-        <Col></Col>
-        <Col xs={12}>
+      <Row className="justify-content-center">
+        <Col>
           <hr
             style={{
               background: "card",
@@ -24,23 +23,24 @@ function EmploymentCard(props: {
             }}
           />
         </Col>
-        <Col></Col>
       </Row>
-      <Row>
-        <Col xs={2}>
-          <a href={props.href}>
-            <Figure className="text-center" style={{ width: "10rem" }}>
-              <Figure.Image src={props.icon} style={{ width: "6rem" }} />
+      <Row className="justify-content-center">
+        <Col xs={3} md={2}>
+          <a href={employment.href}>
+            <Figure className="text-center">
+              <Figure.Image src={employment.icon} />
               <Figure.Caption className="text-center text-white">
-                {props.dates}
+                {employment.dates}
               </Figure.Caption>
             </Figure>
           </a>
         </Col>
-        <Col xs={8}>
+        <Col xs={9} md={9}>
           <Card bg="card">
-            <Card.Title style={{ margin: "auto" }}>{props.title}</Card.Title>
-            <Card.Body>{props.text}</Card.Body>
+            <Card.Title style={{ marginTop: "1rem" }}>
+              {employment.title}
+            </Card.Title>
+            <Card.Body>{employment.text}</Card.Body>
           </Card>
         </Col>
       </Row>
@@ -48,15 +48,15 @@ function EmploymentCard(props: {
   );
 }
 
-function OtherEmploymentCard(props: {
+function OtherEmploymentCard(employment: {
   title: string;
   text: string;
   href: string;
 }) {
   return (
     <Card bg="card">
-      <Card.Title className="text-center">{props.title}</Card.Title>
-      <Card.Body className="text-center">{props.text}</Card.Body>
+      <Card.Title className="text-center">{employment.title}</Card.Title>
+      <Card.Body className="text-center">{employment.text}</Card.Body>
     </Card>
   );
 }
