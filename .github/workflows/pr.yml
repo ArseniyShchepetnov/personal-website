@@ -1,0 +1,29 @@
+name: Deploy to Github Pages
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+jobs:
+  # Build job
+  linting:
+    runs-on: ubuntu-latest
+    # <Not provided for brevity>
+    # At a minimum this job should upload artifacts using actions/upload-pages-artifact
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linters
+        run: npm run lint
