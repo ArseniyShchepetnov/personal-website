@@ -1,9 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import { Figure, Card, Row, Col } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { employment, otherEmployment } from "../data/employment";
-import CarouselExperience from "./experience";
 
 function EmploymentCard(employment: {
   icon: string;
