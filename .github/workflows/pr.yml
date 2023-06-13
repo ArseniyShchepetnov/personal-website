@@ -1,4 +1,4 @@
-name: Deploy to Github Pages
+name: Pull Request Checks
 
 on:
   push:
@@ -8,11 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Build job
-  linting:
+  lint:
     runs-on: ubuntu-latest
-    # <Not provided for brevity>
-    # At a minimum this job should upload artifacts using actions/upload-pages-artifact
     steps:
       - uses: actions/checkout@v3
 
