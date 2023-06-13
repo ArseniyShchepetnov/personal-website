@@ -5,7 +5,9 @@ import { Container } from "react-bootstrap";
 import { employment, otherEmployment } from "../data/employment";
 import { EmploymentCard, OtherEmploymentCard } from "./employment";
 
-function CarouselExperience(array: any[]) {
+function CarouselExperience(
+  array: { id: number; title: string; text: string; href: string }[]
+) {
   return (
     <Carousel
       className="d-flex flex-column justify-content-center"
@@ -15,6 +17,7 @@ function CarouselExperience(array: any[]) {
       {array.map((element) => {
         return (
           <Carousel.Item
+            key={element.id}
             style={{
               paddingBottom: "3rem",
               paddingLeft: "5rem",
@@ -39,8 +42,10 @@ export default function EmploymentHistory() {
       className="text-bg-dark d-flex flex-column justify-content-center"
       fluid
     >
-      <Row style={{ marginTop: "6rem" }}>
-        <h1>Experience</h1>
+      <Row className="justify-content-center" style={{ marginTop: "6rem" }}>
+        <Col xs={12} md={10}>
+          <h1 className="text-section-title">Experience</h1>
+        </Col>
       </Row>
       <Row className="justify-content-center">
         <Col xs={12} md={10}>
@@ -49,16 +54,18 @@ export default function EmploymentHistory() {
               <EmploymentCard
                 icon={element.icon}
                 title={element.title}
+                industry={element.industry}
                 text={element.text}
                 dates={element.dates}
                 href={element.href}
+                key={element.id}
               ></EmploymentCard>
             );
           })}
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col xs={8}>
+        <Col xs={10}>
           <hr
             style={{
               background: "card",
@@ -68,7 +75,7 @@ export default function EmploymentHistory() {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <h4 className="text-center">Other experience:</h4>
+        <h4 className="text-center text-section-title">Other experience:</h4>
       </Row>
       <Row className="justify-content-center">
         <Col xs={12} md={8}>
