@@ -10,7 +10,7 @@ const socialMediaLinks = {
   linkedin: "https://www.linkedin.com/in/arseniy-shchepetnov/",
 };
 
-export default function Header() {
+export default function Navigation() {
   return (
     <Navbar fixed="top" bg="menu" style={{ height: "8vh" }}>
       <Container>

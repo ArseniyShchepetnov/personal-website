@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import "bootstrap/dist/css/bootstrap.css";
 import "../scss/custom.scss";
-import Header from "../components/header";
+import Navigation from "../components/header";
 import Home from "../components/home";
 import EmploymentHistory from "../components/experience";
 import TechStack from "../components/techstack";
@@ -10,7 +10,7 @@ import Education from "../components/education";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="text-bg-dark d-flex flex-column justify-content-space-between">
-      <Header />
+      <Navigation />
       <section id="home"></section>
       <Home />
       <section id="stack"></section>
