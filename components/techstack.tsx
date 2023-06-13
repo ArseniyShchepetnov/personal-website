@@ -125,7 +125,10 @@ function otherTechStackItemsToGrid(
 
 export default function TechStack() {
   return (
-    <Container className="d-flex flex-column justify-content-center " fluid>
+    <Container
+      className="d-flex flex-column justify-content-center page-container"
+      fluid
+    >
       <Row className="justify-content-center" style={{ marginTop: "6rem" }}>
         <Col xs={12} md={10}>
           <h1 className="text-section-title">Technical Stack</h1>

@@ -15,6 +15,7 @@ export default function Home() {
     <Container
       className="text-intro d-flex flex-column justify-content-center page-container"
       fluid
+      style={{ paddingTop: "8vh" }}
     >
       <Row className="justify-content-center" style={{ margin: "1rem" }}>
         <Col xs={12} md={10}>
@@ -32,7 +33,7 @@ export default function Home() {
       </Row>
       <Row className="justify-content-center" style={{ margin: "1rem" }}>
         <Col xs={12} md={10}>
-          <p style={{ fontSize: "2rem" }}>
+          <p style={{ fontSize: "1rem" }}>
             I am not a Frontend developer but I've created this website by
             myself with React for better connection experience.
           </p>
