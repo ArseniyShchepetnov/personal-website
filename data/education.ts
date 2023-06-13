@@ -28,16 +28,19 @@ const educationUniversity = [
 
 const additionalEducation = [
     {
+        id: 1,
         title: "Natural Language Processing Specialization",
         provider: "Coursera",
         url: "https://www.coursera.org/account/accomplishments/specialization/certificate/D4F2WRLEHCY8"
     },
     {
+        id: 2,
         title: "Fundamentals of Reinforcement Learning",
         provider: "Coursera",
         url: "https://www.coursera.org/account/accomplishments/certificate/U3NT5V7XZCNK"
     },
     {
+        id: 3,
         title: "Sample Based Learning",
         provider: "Coursera",
         url: "https://www.coursera.org/account/accomplishments/certificate/KC4T942AATVE"

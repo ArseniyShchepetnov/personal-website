@@ -18,16 +18,16 @@ export default function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">
-              <h4 className="linkText">Home</h4>
+              <h4 className="linkText text-section-title">Home</h4>
             </Nav.Link>
             <Nav.Link href="#stack">
-              <h4 className="linkText">Stack</h4>
+              <h4 className="linkText text-section-title">Stack</h4>
             </Nav.Link>
             <Nav.Link href="#experience">
-              <h4 className="linkText">Experience</h4>
+              <h4 className="linkText text-section-title">Experience</h4>
             </Nav.Link>
             <Nav.Link href="#education">
-              <h4 className="linkText">Education</h4>
+              <h4 className="linkText text-section-title">Education</h4>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

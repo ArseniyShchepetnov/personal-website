@@ -13,7 +13,7 @@ import Card from "react-bootstrap/Card";
 import { Figure } from "react-bootstrap";
 
 function techStackItem(item: {
-  id_: number;
+  id: number;
   name: string;
   src: string;
   description: string;
@@ -30,16 +30,18 @@ function techStackItem(item: {
       <OverlayTrigger trigger="focus" placement="right" overlay={tooltip}>
         <Figure>
           <Figure.Image fluid src={item.src} alt={item.description} />
-          <Figure.Caption className="text-center">{item.name}</Figure.Caption>
+          <Figure.Caption className="text-center fw-bold">
+            {item.name}
+          </Figure.Caption>
         </Figure>
       </OverlayTrigger>
     </a>
   );
 }
 
-function mapTechStackToGrid(
+function techStackGrid(
   array: {
-    id_: number;
+    id: number;
     name: string;
     src: string;
     description: string;
@@ -47,11 +49,32 @@ function mapTechStackToGrid(
   }[]
 ) {
   return (
-    //  <Card className="text-bg-card d-flex flex-row">
     <Row className="justify-content-center">
       {array.map((element) => {
         return (
-          <Col xs={3} md={3}>
+          <Col xs={3} md={3} key={element.id}>
+            {techStackItem(element)}
+          </Col>
+        );
+      })}
+    </Row>
+  );
+}
+
+function mathStackGrid(
+  array: {
+    id: number;
+    name: string;
+    src: string;
+    description: string;
+    url: string;
+  }[]
+) {
+  return (
+    <Row className="justify-content-center">
+      {array.map((element) => {
+        return (
+          <Col xs={3} md={4} key={element.id}>
             {techStackItem(element)}
           </Col>
         );
@@ -61,7 +84,13 @@ function mapTechStackToGrid(
 }
 
 function otherTechStackItemsToGrid(
-  array: { name: string; description: string; src: string; url: string }[]
+  array: {
+    id: number;
+    name: string;
+    description: string;
+    src: string;
+    url: string;
+  }[]
 ) {
   return (
     <Card className="text-bg-card">
@@ -75,7 +104,7 @@ function otherTechStackItemsToGrid(
               </Tooltip>
             );
             return (
-              <Col>
+              <Col key={element.id}>
                 <a href={element.url}>
                   <OverlayTrigger
                     trigger="focus"
@@ -97,25 +126,31 @@ function otherTechStackItemsToGrid(
 export default function TechStack() {
   return (
     <Container className="d-flex flex-column justify-content-center " fluid>
-      <Row style={{ marginTop: "6rem" }}>
-        <h1>Technical Stack</h1>
+      <Row className="justify-content-center" style={{ marginTop: "6rem" }}>
+        <Col xs={12} md={10}>
+          <h1 className="text-section-title">Technical Stack</h1>
+        </Col>
       </Row>
       <Row className="justify-content-center">
         <Col xs={12} md={5} style={{ marginTop: "1rem" }}>
+          <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
+            DEV
+          </h3>
           <Card className="text-bg-card d-flex flex-col">
-            <Card.Title>Development</Card.Title>
-            <Card.Body>{mapTechStackToGrid(techStackItems)}</Card.Body>
+            <Card.Body>{techStackGrid(techStackItems)}</Card.Body>
           </Card>
         </Col>
         <Col xs={12} md={5} style={{ marginTop: "1rem" }}>
+          <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
+            ML
+          </h3>
           <Card className="text-bg-card d-flex flex-col">
-            <Card.Title>Mathematics</Card.Title>
-            <Card.Body>{mapTechStackToGrid(mathTechStackItems)}</Card.Body>
+            <Card.Body>{mathStackGrid(mathTechStackItems)}</Card.Body>
           </Card>
         </Col>
       </Row>
       <Row className="justify-content-center" style={{ marginTop: "1rem" }}>
-        <h4 className="text-center">other</h4>
+        <h3 className="text-center text-section-title">Other</h3>
       </Row>
       <Row className="justify-content-center" style={{ marginTop: "1rem" }}>
         <Col xs={12} md={6}>
