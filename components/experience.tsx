@@ -16,14 +16,7 @@ function CarouselExperience(
     >
       {array.map((element) => {
         return (
-          <Carousel.Item
-            key={element.id}
-            style={{
-              paddingBottom: "3rem",
-              paddingLeft: "5rem",
-              paddingRight: "5rem",
-            }}
-          >
+          <Carousel.Item key={element.id}>
             <OtherEmploymentCard
               title={element.title}
               text={element.text}

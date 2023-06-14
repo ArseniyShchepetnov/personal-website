@@ -61,7 +61,9 @@ function OtherEmploymentCard(employment: {
       <Card.Title className="text-center" style={{ margin: "1rem" }}>
         {employment.title}
       </Card.Title>
-      <Card.Body className="text-center">{employment.text}</Card.Body>
+      <Card.Body className="text-center" style={{ margin: "2rem" }}>
+        {employment.text}
+      </Card.Body>
     </Card>
   );
 }
