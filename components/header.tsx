@@ -4,6 +4,7 @@ import { SocialIcon } from "react-social-icons";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { Row, Col } from "react-bootstrap";
 
 const socialMediaLinks = {
   github: "https://github.com/arseniyshchepetnov",
@@ -12,36 +13,63 @@ const socialMediaLinks = {
 
 export default function Navigation() {
   return (
-    <Navbar fixed="top" bg="menu" style={{ height: "8vh" }}>
+    <Navbar
+      expand="md"
+      fixed="top"
+      bg="menu"
+      variant="dark"
+      style={{ height: "8vh" }}
+    >
       <Container>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          style={{ backgroundColor: "#1b1f47", borderRadius: "1rem" }}
+        >
           <Nav className="me-auto">
             <Nav.Link href="#home">
-              <h4 className="linkText text-section-title">Home</h4>
+              <h4 className="linkText text-center text-section-title">Home</h4>
             </Nav.Link>
             <Nav.Link href="#stack">
-              <h4 className="linkText text-section-title">Stack</h4>
+              <h4 className="linkText text-center text-section-title">Stack</h4>
             </Nav.Link>
             <Nav.Link href="#experience">
-              <h4 className="linkText text-section-title">Experience</h4>
+              <h4 className="linkText text-center text-section-title">
+                Experience
+              </h4>
             </Nav.Link>
             <Nav.Link href="#education">
-              <h4 className="linkText text-section-title">Education</h4>
+              <h4 className="linkText text-center text-section-title">
+                Education
+              </h4>
             </Nav.Link>
           </Nav>
+          <Navbar.Text>
+            {/* <div className="text-intro">a.shchepetnov@gmail.com</div> */}
+            <ul className="social-media-list text-center d-flex flex-row justify-content-center ">
+              <div
+                className="social-handle-item d-flex justify-content-center align-items-center"
+                style={{ paddingLeft: "0.5rem" }}
+              >
+                <div className="text-center text-intro">
+                  a.shchepetnov@gmail.com
+                </div>
+              </div>
+              <div
+                className="social-handle-item"
+                style={{ paddingLeft: "0.5rem" }}
+              >
+                <SocialIcon url={socialMediaLinks.github} bgColor="white" />
+              </div>
+              <div
+                className="social-handle-item"
+                style={{ paddingLeft: "0.5rem" }}
+              >
+                <SocialIcon url={socialMediaLinks.linkedin} />
+              </div>
+            </ul>
+          </Navbar.Text>
         </Navbar.Collapse>
-        <div>a.shchepetnov@gmail.com</div>
-        <div className="social-media-box">
-          <ul className="social-media-list">
-            <div className="social-handle-item">
-              <SocialIcon url={socialMediaLinks.github} bgColor="white" />
-            </div>
-            <div className="social-handle-item">
-              <SocialIcon url={socialMediaLinks.linkedin} />
-            </div>
-          </ul>
-        </div>
       </Container>
     </Navbar>
   );
