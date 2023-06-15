@@ -26,7 +26,7 @@ export default function Home() {
       <Row className="justify-content-center" style={{ margin: "1rem" }}>
         <Col xs={12} md={10}>
           <p style={{ fontSize: "2rem" }}>
-            I develop end-to-end data driven and machine learning solutions and
+            I develop end-to-end / fullstack machine learning solutions and
             components.
           </p>
         </Col>
