@@ -9,6 +9,7 @@ import { Row, Col } from "react-bootstrap";
 const socialMediaLinks = {
   github: "https://github.com/arseniyshchepetnov",
   linkedin: "https://www.linkedin.com/in/arseniy-shchepetnov/",
+  medium: "https://medium.com/@a.shchepetnov",
 };
 
 export default function Navigation() {
@@ -66,6 +67,12 @@ export default function Navigation() {
                 style={{ paddingLeft: "0.5rem" }}
               >
                 <SocialIcon url={socialMediaLinks.linkedin} />
+              </div>
+              <div
+                className="social-handle-item"
+                style={{ paddingLeft: "0.5rem" }}
+              >
+                <SocialIcon url={socialMediaLinks.medium} bgColor="white" />
               </div>
             </ul>
           </Navbar.Text>
