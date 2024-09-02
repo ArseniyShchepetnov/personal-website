@@ -46,6 +46,7 @@ export default function EmploymentHistory() {
             return (
               <EmploymentCard
                 icon={element.icon}
+                name={element.name}
                 title={element.title}
                 industry={element.industry}
                 text={element.text}
