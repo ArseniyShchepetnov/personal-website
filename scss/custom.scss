@@ -1,13 +1,14 @@
 $theme-colors: (
-    "empty": #120907,
-    "dark": #3c4c78,
-    "light": #333399,
-    "primary": #999966,
-    "secondary": #cc66ff,
-    "card": #c3b1d6,
+    "empty": #225A98,
+    "dark": #000000,
+    "light": #B3D0EF,
+    "primary": #FFC46B,
+    "secondary": #E99C25,
+    "card": #2b2b2d,
     "menu": #1b1f47,
-    "section-title": #f3e7ae,
-    "intro": #e7d88f,
+    "section-title": #B3D0EF,
+    "intro": #FFC46B,
+    "background": #5d5f62,
 );
 
 .header-style {
@@ -20,7 +21,7 @@ $theme-colors: (
     display: flex;
     flex-direction: row;
     justify-content: "flex-end";
-    margin: 0 auto;
+
 }
 
 .social-media-list {
@@ -28,6 +29,9 @@ $theme-colors: (
     flex-direction: row;
 }
 
+.title-names {
+    color: #E99C25
+}
 
 .page-container {
     min-height: 100vh;
@@ -41,6 +45,30 @@ $theme-colors: (
 .sticky-nav {
     position: sticky;
     top: 0;
+}
+
+.section-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: "flex-center";
+    text-align: center;
+    color: #B3D0EF;
+}
+
+#experience-type {
+    font-size: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: "flex-center";
+}
+
+#experience-type-span {
+    padding: 3%;
+    text-align: center;
+}
+
+.tech-stack-item-caption {
+    color: #B3D0EF
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";

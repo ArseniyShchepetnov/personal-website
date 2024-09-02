@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../scss/custom.scss";
 import Navigation from "../components/header";
 import Home from "../components/home";
-import EmploymentHistory from "../components/experience";
+import { Career } from "../components/employment";
 import TechStack from "../components/techstack";
-import Education from "../components/education";
+import Contacts from "../components/contacts";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,12 +13,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Navigation />
       <section id="home"></section>
       <Home />
+
       <section id="stack"></section>
       <TechStack />
-      <section id="experience"></section>
-      <EmploymentHistory />
-      <section id="education"></section>
-      <Education />
+
+      <section id="career"></section>
+      <Career />
+
+
+
+      <section id="contacts"></section>
+      <Contacts />
+
     </div>
   );
 }

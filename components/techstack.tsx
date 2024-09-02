@@ -28,10 +28,10 @@ function techStackItem(item: {
   return (
     <a href={item.url}>
       <OverlayTrigger trigger="focus" placement="right" overlay={tooltip}>
-        <Figure>
-          <Figure.Image fluid src={item.src} alt={item.description} />
-          <Figure.Caption className="text-center fw-bold">
-            {item.name}
+        <Figure >
+          <Figure.Image fluid style={{ height: "5rem" }} src={item.src} alt={item.description} />
+          <Figure.Caption className="text-center">
+            <h5 className="tech-stack-item-caption">{item.name}</h5>
           </Figure.Caption>
         </Figure>
       </OverlayTrigger>
@@ -52,7 +52,7 @@ function techStackGrid(
     <Row className="justify-content-center">
       {array.map((element) => {
         return (
-          <Col xs={3} md={3} key={element.id}>
+          <Col xs={3} md={1} key={element.id} style={{ margin: "1rem" }}>
             {techStackItem(element)}
           </Col>
         );
@@ -74,8 +74,8 @@ function mathStackGrid(
     <Row className="justify-content-center">
       {array.map((element) => {
         return (
-          <Col xs={3} md={4} key={element.id}>
-            {techStackItem(element)}
+          <Col xs={3} md={6} key={element.id}>
+            {<h4>{element.name}</h4>}
           </Col>
         );
       })}
@@ -111,7 +111,7 @@ function otherTechStackItemsToGrid(
                     placement="right"
                     overlay={tooltip}
                   >
-                    <Image fluid src={element.src} alt={element.description} />
+                    <Image fluid src={element.src} alt={element.description} style={{ height: "3rem" }} />
                   </OverlayTrigger>
                 </a>
               </Col>
@@ -131,27 +131,23 @@ export default function TechStack() {
     >
       <Row className="justify-content-center" style={{ marginTop: "6rem" }}>
         <Col xs={12} md={10}>
-          <h1 className="text-section-title">Technical Stack</h1>
+          <h1 className="section-title">Technical Stack</h1>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col xs={12} md={5} style={{ marginTop: "1rem" }}>
+        <Col xs={12} md={10} style={{ marginTop: "1rem" }}>
           <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
-            DEV
+            Development
           </h3>
+          <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"These are not the only tools that I use. I continuously develop myself..."}</h4>
           <Card className="text-bg-card d-flex flex-col">
             <Card.Body>{techStackGrid(techStackItems)}</Card.Body>
           </Card>
         </Col>
-        <Col xs={12} md={5} style={{ marginTop: "1rem" }}>
-          <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
-            ML
-          </h3>
-          <Card className="text-bg-card d-flex flex-col">
-            <Card.Body>{mathStackGrid(mathTechStackItems)}</Card.Body>
-          </Card>
-        </Col>
       </Row>
+
+
+
       <Row className="justify-content-center" style={{ marginTop: "1rem" }}>
         <h3 className="text-center text-section-title">Other</h3>
       </Row>
@@ -160,6 +156,28 @@ export default function TechStack() {
           {otherTechStackItemsToGrid(otherTechStackItems)}
         </Col>
       </Row>
+
+      <Row className="justify-content-center">
+        <Col xs={12} md={6}>
+          <h3 className="text-center text-intro" style={{ fontSize: "2rem", marginTop: "3rem" }}>
+            Machine Learning
+          </h3>
+          <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"The most exciting part..."}</h4>
+          <Card className="text-bg-card d-flex flex-col">
+            <Card.Body>
+              <h3 class="text-center tech-stack-item-caption">Large Language Models</h3>
+              <h3 class="text-center tech-stack-item-caption">Bayesian Networks</h3>
+              <h3 class="text-center tech-stack-item-caption">Digital Signal Processing</h3>
+              <h3 class="text-center tech-stack-item-caption">Reinforcement Learning</h3>
+              <h3 class="text-center tech-stack-item-caption">Computer Vision</h3>
+              <h3 class="text-center tech-stack-item-caption">Tree Ensembles</h3>
+            </Card.Body>
+          </Card>
+
+        </Col>
+
+      </Row>
+
     </Container>
   );
 }

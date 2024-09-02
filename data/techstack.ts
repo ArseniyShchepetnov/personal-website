@@ -98,6 +98,14 @@ export const techStackItems = [
         description: "Data Validation Library",
         url: "https://pandera.readthedocs.io/",
 
+    },
+    {
+        id: 15,
+        name: "Redshift",
+        src: "redshift.png",
+        description: "Database",
+        url: "https://aws.amazon.com/redshift/",
+
     }
 ];
 
@@ -139,13 +147,13 @@ export const otherTechStackItems = [
         description: "Cloud Computing Service",
         url: "https://azure.microsoft.com/",
     },
-    {
-        id: 6,
-        name: "Yandex Cloud",
-        src: "yandexcloud.png",
-        description: "Cloud Computing Service",
-        url: "https://cloud.yandex.ru/",
-    },
+    // {
+    //     id: 6,
+    //     name: "Yandex Cloud",
+    //     src: "yandexcloud.png",
+    //     description: "Cloud Computing Service",
+    //     url: "https://cloud.yandex.ru/",
+    // },
     {
         id: 7,
         name: "DVC",
@@ -198,7 +206,7 @@ export const mathTechStackItems = [
     {
         id: 6,
         src: "tree.png",
-        name: "Tree Ensembles (Boosting, Bagging)",
+        name: "Tree Ensembles",
         description: "Machine Learning Model",
         url: "https://en.wikipedia.org/wiki/Decision_tree",
     },
