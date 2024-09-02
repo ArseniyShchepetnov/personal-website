@@ -165,12 +165,12 @@ export default function TechStack() {
           <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"The most exciting part..."}</h4>
           <Card className="text-bg-card d-flex flex-col">
             <Card.Body>
-              <h3 class="text-center tech-stack-item-caption">Large Language Models</h3>
-              <h3 class="text-center tech-stack-item-caption">Bayesian Networks</h3>
-              <h3 class="text-center tech-stack-item-caption">Digital Signal Processing</h3>
-              <h3 class="text-center tech-stack-item-caption">Reinforcement Learning</h3>
-              <h3 class="text-center tech-stack-item-caption">Computer Vision</h3>
-              <h3 class="text-center tech-stack-item-caption">Tree Ensembles</h3>
+              <h3 className="text-center tech-stack-item-caption">Large Language Models</h3>
+              <h3 className="text-center tech-stack-item-caption">Bayesian Networks</h3>
+              <h3 className="text-center tech-stack-item-caption">Digital Signal Processing</h3>
+              <h3 className="text-center tech-stack-item-caption">Reinforcement Learning</h3>
+              <h3 className="text-center tech-stack-item-caption">Computer Vision</h3>
+              <h3 className="text-center tech-stack-item-caption">Tree Ensembles</h3>
             </Card.Body>
           </Card>
 

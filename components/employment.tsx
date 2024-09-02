@@ -26,7 +26,7 @@ function EmploymentCard(item: {
           </Col>
           <Col>
             <h5 style={{ marginTop: "2rem" }}>{item.dates}</h5>
-            {item.title.map((name) => { return (<h2 class="title-names">{name}</h2>); })}
+            {item.title.map((name) => { return (<h2 className="title-names">{name}</h2>); })}
           </Col>
         </Row>
       </Card.Header>
