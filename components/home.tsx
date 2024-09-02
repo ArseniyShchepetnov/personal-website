@@ -19,7 +19,7 @@ export default function Home() {
       <Row className="justify-content-center">
         <Col xs={0} md={3}>
           <Figure className="text-center">
-            <Figure.Image src={"me-1.png"} />
+            <Figure.Image src={"me.png"} />
           </Figure>
         </Col>
         <Col xs={12} md={5} >
