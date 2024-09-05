@@ -6,7 +6,7 @@ export const employment = [
         name: "Intently (YC23) / Socap.ai",
         title: ["Senior Data Engineer"],
         industry: "AI tools for startups",
-        text: "In this startup I was responsible for the data infrastructure and algorithmic design in the social data and LLM based projects. I prepared data infrastructure and NLP algorithms that work in the production environment.",
+        text: "In this YC startup I was responsible for the data infrastructure and algorithmic design in the social data and LLM based projects. I prepared data infrastructure and deployed NLP algorithms that work in the production environment.",
         dates: "Feb 2023 - Sep 2023",
         href: "https://www.socap.ai",
     },

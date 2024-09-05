@@ -63,17 +63,26 @@ function Career() {
         <h1 className="section-title">My Career</h1>
       </Col>
     </Row>
-    <Row style={{ marginLeft: "5rem", marginRight: "5rem" }}>
-      <CardGroup>
-        <Row xs={1} md={2} >
-          {employment.map((item) => (
-            <Col key={item.id} style={{ marginTop: "1rem" }} className="d-flex align-items-stretch">
-              {EmploymentCard(item)}
-            </Col>
-          ))}
+    <Row className="justify-content-center" >
+      <Col xs={12} md={10}>
+        <CardGroup>
+          <Row xs={1} md={2} >
+            {employment.sort((a, b) => {
+              if (a.id < b.id) {
+                return -1;
+              } else if (b.id < a.id) {
+                return 1;
+              }
+              return 0;
+            }).map((item) => (
+              <Col key={item.id} style={{ marginTop: "1rem" }} className="d-flex align-items-stretch">
+                {EmploymentCard(item)}
+              </Col>
+            ))}
 
-        </Row>
-      </CardGroup>
+          </Row>
+        </CardGroup>
+      </Col>
     </Row>
   </Container>
 }

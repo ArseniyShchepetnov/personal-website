@@ -106,6 +106,14 @@ export const techStackItems = [
         description: "Database",
         url: "https://aws.amazon.com/redshift/",
 
+    },
+    {
+        id: 16,
+        name: "Google Cloud Platform",
+        src: "gcp.png",
+        description: "Google Cloud Platform",
+        url: "https://aws.amazon.com/redshift/",
+
     }
 ];
 
@@ -192,7 +200,7 @@ export const mathTechStackItems = [
     {
         id: 4,
         src: "transformers.png",
-        name: "NLP",
+        name: "Large Language Models",
         description: "Machine Learning Generative Model",
         url: "https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)",
     },

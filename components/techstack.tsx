@@ -18,7 +18,7 @@ function techStackItem(item: {
   src: string;
   description: string;
   url: string;
-}) {
+}, height: string) {
   const tooltip = (
     <Tooltip id="tooltip">
       <strong>{item.name}</strong>
@@ -27,15 +27,25 @@ function techStackItem(item: {
   );
   return (
     <a href={item.url}>
+      {/* <OverlayTrigger trigger="focus" placement="right" overlay={tooltip}>
+        <Card bg="light">
+          <Card.Img variant="top" src={item.src} />
+          <Card.Body>
+            <Card.Text>
+              {item.name}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </OverlayTrigger> */}
       <OverlayTrigger trigger="focus" placement="right" overlay={tooltip}>
-        <Figure >
-          <Figure.Image fluid style={{ height: "5rem" }} src={item.src} alt={item.description} />
-          <Figure.Caption className="text-center">
+        <Figure className="flex flex-col justify-content-center">
+          <Figure.Image fluid style={{ height: height, width: height }} src={item.src} alt={item.description} />
+          <Figure.Caption >
             <h5 className="tech-stack-item-caption">{item.name}</h5>
           </Figure.Caption>
         </Figure>
       </OverlayTrigger>
-    </a>
+    </a >
   );
 }
 
@@ -50,10 +60,18 @@ function techStackGrid(
 ) {
   return (
     <Row className="justify-content-center">
-      {array.map((element) => {
+
+      {array.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        } else if (b.name < a.name) {
+          return 1;
+        }
+        return 0;
+      }).map((element) => {
         return (
-          <Col xs={3} md={1} key={element.id} style={{ margin: "1rem" }}>
-            {techStackItem(element)}
+          <Col xs={3} md={2} key={element.id}>
+            {techStackItem(element, "5rem")}
           </Col>
         );
       })}
@@ -61,7 +79,8 @@ function techStackGrid(
   );
 }
 
-function mathStackGrid(
+
+function mlStackGrid(
   array: {
     id: number;
     name: string;
@@ -72,10 +91,18 @@ function mathStackGrid(
 ) {
   return (
     <Row className="justify-content-center">
-      {array.map((element) => {
+
+      {array.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        } else if (b.name < a.name) {
+          return 1;
+        }
+        return 0;
+      }).map((element) => {
         return (
-          <Col xs={3} md={6} key={element.id}>
-            {<h4>{element.name}</h4>}
+          <Col xs={3} md={3} key={element.id} style={{ margin: "1rem" }}>
+            {techStackItem(element, "20rem")}
           </Col>
         );
       })}
@@ -146,8 +173,6 @@ export default function TechStack() {
         </Col>
       </Row>
 
-
-
       <Row className="justify-content-center" style={{ marginTop: "1rem" }}>
         <h3 className="text-center text-section-title">Other</h3>
       </Row>
@@ -158,23 +183,51 @@ export default function TechStack() {
       </Row>
 
       <Row className="justify-content-center">
-        <Col xs={12} md={6}>
+
+
+        <Col xs={12} md={8}>
           <h3 className="text-center text-intro" style={{ fontSize: "2rem", marginTop: "3rem" }}>
             Machine Learning
           </h3>
           <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"The most exciting part..."}</h4>
-          <Card className="text-bg-card d-flex flex-col">
-            <Card.Body>
-              <h3 className="text-center tech-stack-item-caption">Large Language Models</h3>
-              <h3 className="text-center tech-stack-item-caption">Bayesian Networks</h3>
-              <h3 className="text-center tech-stack-item-caption">Digital Signal Processing</h3>
-              <h3 className="text-center tech-stack-item-caption">Reinforcement Learning</h3>
-              <h3 className="text-center tech-stack-item-caption">Computer Vision</h3>
-              <h3 className="text-center tech-stack-item-caption">Tree Ensembles</h3>
-            </Card.Body>
-          </Card>
+          <Container className="text-bg-card">
+            <Row>
+              <Col xs={12} md={6}>
+                <Figure style={{ margin: "3rem" }}>
+                  <Figure.Image src={"ai.png"} />
+                </Figure>
+              </Col>
+              <Col xs={12} md={6}>
+                <Container style={{ margin: "3rem" }}>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Large Language Models</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Bayesian Networks</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Digital Signal Processing</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Reinforcement Learning</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Computer Vision</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }} >Tree Ensembles</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Statistics</h2>
+                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>...</h2>
+                </Container>
+              </Col>
+
+            </Row>
+          </Container>
+
+
+
+
 
         </Col>
+        {/* 
+        <Col xs={12} md={10} style={{ marginTop: "1rem" }}>
+          <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
+            Development
+          </h3>
+          <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"These are not the only tools that I use. I continuously develop myself..."}</h4>
+          <Card className="text-bg-card d-flex flex-col">
+            <Card.Body>{mlStackGrid(mathTechStackItems)}</Card.Body>
+          </Card>
+        </Col> */}
 
       </Row>
 

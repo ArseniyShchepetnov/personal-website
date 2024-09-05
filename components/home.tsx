@@ -32,15 +32,17 @@ export default function Home() {
 
           <h3 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"I am"}</h3>
 
-          <Container id="experience-type" className="justify-content-center">
-            <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Machine Learning Engineer</span>
-          </Container>
+
           <Container id="experience-type" className="justify-content-center">
             <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Data Scientist</span>
           </Container>
 
           <Container id="experience-type" className="justify-content-center">
             <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Data Engineer</span>
+          </Container>
+
+          <Container id="experience-type" className="justify-content-center">
+            <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Machine Learning Engineer</span>
           </Container>
 
           <h3 className="text-center" style={{ color: "grey", marginTop: "3rem" }}>{"with Master's Degree in Theoretical Physics."}</h3>
