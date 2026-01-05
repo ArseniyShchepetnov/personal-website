@@ -236,7 +236,7 @@ export const TechStackWordCloud = [
     { "TDD": 0.7 }, { "Asynchronous Programming": 0.5 },
 
     { "PostgreSQL": 1 }, { "pgvector": 0.8 }, { "qdrant": 0.8 }, { "ClickHouse": 0.7 }, { "MySQL": 0.7 }, { "Redshift": 0.8 },
-    { "Vector Databases": 0.9 }, { "SQL/NoSQL": 0.8 }, { "Pinecone": 0.7 }, { "Apache Hudi": 0.6 },
-    { "ELT/ETL": 0.9 }, { "DWH": 0.8 }, { "Data Lake": 0.8 }, { "Git": 0.9 }
+    { "Vector Databases": 0.9 }, { "NoSQL": 0.8 }, { "Pinecone": 0.7 }, { "Apache Hudi": 0.6 },
+    { "ELT": 0.9 }, { "ETL": 0.9 }, { "DWH": 0.8 }, { "Data Lake": 0.8 }, { "Git": 0.9 }
 
 ];

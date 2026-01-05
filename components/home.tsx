@@ -1,5 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Figure } from "react-bootstrap";
+import dynamic from "next/dynamic"; // Import dynamic from next/dynamic
+
+// Dynamically import TechStackWordCloud with SSR disabled
+const DynamicTechStackWordCloud = dynamic(() => import("./TechStackWordCloud"), { ssr: false });
+
 
 const myName = (
   <div style={{ display: "inline", fontSize: "3rem" }}>Arseniy Shchepetnov</div>
@@ -34,6 +39,13 @@ export default function Home() {
             <span style={{ fontSize: "1.2rem" }}>Machine Learning Engineer</span>
             <span style={{ fontSize: "1.2rem" }}>AI Engineer</span>
           </Container>
+
+          {/* Word cloud section */}
+          <Row className="justify-content-center">
+            <Col xs={12} md={8} className="mx-auto">
+              <DynamicTechStackWordCloud />
+            </Col>
+          </Row>
 
         </Col>
       </Row >

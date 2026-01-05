@@ -10,12 +10,6 @@ import {
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Card from "react-bootstrap/Card";
-import dynamic from "next/dynamic"; // Import dynamic from next/dynamic
-
-// Dynamically import TechStackWordCloud with SSR disabled
-const DynamicTechStackWordCloud = dynamic(() => import("./TechStackWordCloud"), { ssr: false });
-
-// Removed Figure import as it's no longer used for techStackItem
 
 // Unified techStackItem for rendering individual tech items
 function techStackItem(item: {
@@ -42,7 +36,7 @@ function techStackItem(item: {
             width: 'auto',
             height: 'auto',
             objectFit: 'contain',
-            backgroundColor: 'rgba(255,255,255,0.1)', // Keep background color if desired, or remove
+            backgroundColor: 'transparent', // Changed to transparent
             padding: '0.5rem', // Add some padding around the image if it was tight
             borderRadius: '0.25rem', // Optional: slight rounding for the image itself
           }}
@@ -71,14 +65,10 @@ export default function TechStack() {
           <h1 className="section-title">Technical Stack</h1>
         </Col>
       </Row>
-      <Row className="justify-content-center">
-        <Col xs={12} md={8} className="mx-auto">
-          <DynamicTechStackWordCloud />
-        </Col>
-      </Row>
+      {/* Removed the word cloud section */}
 
       <Col xs={12} md={8} className="mx-auto" style={{ marginTop: "1rem" }}> {/* Changed md={10} to md={8} */}
-        <Card bg="card" text="white" className="d-flex flex-col">
+        <Card text="white" className="d-flex flex-col"> {/* Removed bg="card" */}
           <Card.Body>
             <Row className="justify-content-evenly g-2"> {/* Changed justify-content-start to justify-content-evenly */}
               {allTechStackItems
