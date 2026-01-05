@@ -1,4 +1,3 @@
-
 export const employment = [
     {
         id: 0,
@@ -24,7 +23,7 @@ export const employment = [
         id: 2,
         icon: "3commas.png",
         name: "3Commas",
-        title: ["Data Scientist"],
+        title: ["Senior Data Scientist"],
         industry: "Cryptocurrency Traiding",
         text: "Here I developed backtesting components for cryptocurrency trading models.",
         dates: "Nov 2022 - Jan 2023",
@@ -33,7 +32,7 @@ export const employment = [
     {
         id: 3, 
         icon: "pwc-light.png",
-        name: "",
+        name: "PwC", // Updated name
         title:[ "Senior Data Scientist", "Team Leader"],
         industry: "AI Technology",
         text: "I managed a small team (3-5 persons) on projects related to AI applications in Oil&Gas industry. It was a full cycle ML development including data engineering, MLOps and Machine Learning Engineering tasks. Last year in the company I was promoted to the Manager grade.",
@@ -43,7 +42,7 @@ export const employment = [
     {
         id: 4,
         icon: "ibm.png",
-        name: "",
+        name: "IBM", // Updated name
         title: ["Senior Data Scientist", "Team Leader"],
         industry: "AI Technology",
         text: "I produced research and developed end-to-end AI solutions for Oil&Gas industry. I developed MLOps, data engineering components and ML/DL models themselves. Tasks were related to time-series analysis and spatial modeling.",
@@ -61,24 +60,14 @@ export const employment = [
         href: "https://healbe.com/",
     },
     {
-        id: 6,
-        icon: "",
-        name: "",
-        title: ["Software Developer"],
-        industry: "Software Development",
-        text: "My first real experience when I developed frontend, backend and database with C++, Qt and PostgreSQL.",
-        dates: "Oct 2013 - Feb 2016",
-        href: "",
-    },
-    {
-        id: 7,
-        icon: "",
-        name: "",
-        title: ["Researcher", "Post-Graduate Student"],
-        industry: "Theoretical Physics",
-        text: "As a post-graduate student I provided research in Atomic Physics and Quantum Electrodynamics.",
-        dates: "Oct 2013 - Feb 2016",
-        href: "",
+        id: 8,
+        icon: "bluecloud.png", // Changed to bluecloud.png
+        name: "BlueCloud",
+        title: ["Senior AI/ML Engineer"],
+        industry: "Cloud AI/ML Solutions",
+        text: "Developed and deployed advanced AI/ML solutions on cloud platforms, focusing on scalable and robust machine learning systems.",
+        dates: "Oct 2023 - Present",
+        href: "#",
     }
 
 ]

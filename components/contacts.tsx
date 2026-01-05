@@ -16,23 +16,23 @@ function SocialNetworks() {
             className="social-handle-item"
             style={{ marginRight: "0.5rem" }}
         >
-            <SocialIcon url={socialMediaLinks.github} bgColor="white" />
+            <SocialIcon url={socialMediaLinks.github} bgColor="white" className="social-icon" />
         </div>
         <div
             className="social-handle-item"
             style={{ marginRight: "0.5rem" }}
         >
-            <SocialIcon url={socialMediaLinks.linkedin} />
+            <SocialIcon url={socialMediaLinks.linkedin} className="social-icon" />
         </div>
         <div
             className="social-handle-item"
             style={{ marginRight: "0.5rem" }}
         >
-            <SocialIcon url={socialMediaLinks.medium} bgColor="white" />
+            <SocialIcon url={socialMediaLinks.medium} bgColor="white" className="social-icon" />
         </div>
 
         <div>
-            <SocialIcon url={socialMediaLinks.coursera} bgColor="white" />
+            <SocialIcon url={socialMediaLinks.coursera} bgColor="white" className="social-icon" />
         </div>
     </ul>)
 }
@@ -52,7 +52,7 @@ export default function Contacts() {
             <Col xs={12} md={10} >
                 <h4 className="text-center" style={{ color: "#B3D0EF", marginTop: "3rem", marginBottom: "2rem" }}>Email:</h4>
                 <p className="text-center">a.shchepetnov@gmail.com</p>
-                <h4 className="text-center" style={{ color: "#B3D0EF", marginTop: "3rem", marginBottom: "2rem" }}>Social Networks:</h4>{SocialNetworks()}
+                <h4 className="text-center" style={{ color: "#B3D0EF", marginTop: "3rem", marginBottom: "2rem" }}>Social Networks</h4>{SocialNetworks()}
             </Col>
         </Row>
 

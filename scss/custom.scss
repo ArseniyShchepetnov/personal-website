@@ -1,74 +1,174 @@
+// 1. Modern Color Palette
 $theme-colors: (
-    "empty": #225A98,
-    "dark": #000000,
-    "light": #B3D0EF,
-    "primary": #FFC46B,
-    "secondary": #E99C25,
-    "card": #2b2b2d,
-    "menu": #1b1f47,
-    "section-title": #B3D0EF,
-    "intro": #FFC46B,
-    "background": #5d5f62,
+  "dark": #0A192F,       // Deep navy background
+  "light": #CCD6F6,      // Light text color
+  "primary": #B8860B,    // DarkGoldenRod accent
+  "secondary": #8892B0,  // Lighter grey for secondary text/elements
+  "card": #112240,       // Slightly lighter navy for cards
+  "menu": #112240,       // Same as card for menu
+  "section-title": #CCD6F6, // Light text color for titles
+  "intro": #B8860B,      // Accent for intro elements
+  "background": #0A192F,
 );
 
-.header-style {
-    display: flex;
-    flex-direction: row;
-    justify-content: "flex-end";
+// 2. Body Styles & Global Smoothness
+body {
+  // Original background color, now part of the gradient
+  // background-color: map-get($theme-colors, "background");
+  color: map-get($theme-colors, "light");
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  // Radial gradient to make borders darker
+  background-image: radial-gradient(
+    circle at center,
+    darken(map-get($theme-colors, "background"), 5%) 0%, // Slightly lighter in the center
+    map-get($theme-colors, "background") 70% // Original color towards the edges
+  );
+  background-size: cover;
+  background-attachment: fixed; // Keep background fixed during scroll
 }
 
-.social-media-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: "flex-end";
-
+* {
+  transition: all 0.2s ease-in-out;
 }
 
-.social-media-list {
-    display: flex;
-    flex-direction: row;
+// 3. Card Styling
+.card {
+  border: 1px solid map-get($theme-colors, "primary");
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-muted {
+    color: map-get($theme-colors, "light") !important;
+  }
 }
 
-.title-names {
-    color: #E99C25
-}
+// 4. Link Styling
+a {
+  color: map-get($theme-colors, "primary");
+  text-decoration: none;
 
-.page-container {
-    min-height: 100vh;
-    max-width: 100vw;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .linkText {
     color: white;
 }
 
-.sticky-nav {
-    position: sticky;
-    top: 0;
+// 5. Typography enhancements
+h1, h2, h3, h4, h5, h6, .section-title {
+  color: map-get($theme-colors, "light");
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-names {
+    color: map-get($theme-colors, "primary")
+}
+
+// 6. Layout fixes
+.header-style, .social-media-box, .social-media-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .section-title {
     display: flex;
     flex-direction: column;
-    justify-content: "flex-center";
+    justify-content: center;
     text-align: center;
-    color: #B3D0EF;
+    color: map-get($theme-colors, "section-title");
 }
 
 #experience-type {
     font-size: 2rem;
     margin-top: 1rem;
     display: flex;
-    justify-content: "flex-center";
+    justify-content: center;
 }
 
 #experience-type-span {
     padding: 3%;
     text-align: center;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(map-get($theme-colors, "primary"), 0.5);
+    }
 }
 
-.tech-stack-item-caption {
-    color: #FFC46B
+// 7. Custom Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: map-get($theme-colors, "dark");
+}
+
+::-webkit-scrollbar-thumb {
+  background: map-get($theme-colors, "secondary");
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: map-get($theme-colors, "primary");
+}
+
+// 8. Navbar Customization
+.navbar-custom {
+  background-color: rgba(map-get($theme-colors, "background"), 0.8) !important; // Slightly transparent
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(map-get($theme-colors, "primary"), 0.3); // Subtle border
+}
+
+// 9. Nav Link Hover Effect
+.nav-link {
+  position: relative;
+  & h4 { // Targeting the h4 inside Nav.Link
+    color: map-get($theme-colors, "light") !important; // Ensure text color is light
+  }
+
+  &:hover {
+    & h4 {
+      color: map-get($theme-colors, "primary") !important; // Highlight on hover
+    }
+  }
+
+  &::after { // Underline effect
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: map-get($theme-colors, "primary");
+    transition: width .3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// 10. Social Media Icon Styling (assuming they are within an anchor tag)
+.social-icon {
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-3px) scale(1.1);
+    filter: drop-shadow(0 0 8px map-get($theme-colors, "primary"));
+  }
+}
+
+
+// Bootstrap Import
 @import "../node_modules/bootstrap/scss/bootstrap";

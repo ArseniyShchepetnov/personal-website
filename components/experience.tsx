@@ -2,12 +2,15 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-import { employment, otherEmployment } from "../data/employment";
-import { EmploymentCard, OtherEmploymentCard } from "./employment";
+import { otherEmployment } from "../data/employment";
+import CareerSection from "./employment"; // Import the default export
 
 function CarouselExperience(
   array: { id: number; title: string; text: string; href: string }[]
 ) {
+  // This component now needs to render the 'otherEmployment' data in a way that doesn't rely on `OtherEmploymentCard`
+  // Since `OtherEmploymentCard` is gone, I will simplify this to just display the title and text within the carousel.
+  // If a more specific display is needed, a new sub-component would be required.
   return (
     <Carousel
       className="d-flex flex-column justify-content-center"
@@ -17,11 +20,11 @@ function CarouselExperience(
       {array.map((element) => {
         return (
           <Carousel.Item key={element.id}>
-            <OtherEmploymentCard
-              title={element.title}
-              text={element.text}
-              href={element.href}
-            ></OtherEmploymentCard>
+            <div className="text-center p-3">
+              <h5>{element.title}</h5>
+              <p>{element.text}</p>
+              {element.href && <a href={element.href} target="_blank" rel="noopener noreferrer">Learn More</a>}
+            </div>
           </Carousel.Item>
         );
       })}
@@ -40,25 +43,11 @@ export default function EmploymentHistory() {
           <h1 className="text-section-title">Experience</h1>
         </Col>
       </Row>
-      <Row className="justify-content-center">
-        <Col xs={12} md={10}>
-          {employment.map((element) => {
-            return (
-              <EmploymentCard
-                icon={element.icon}
-                name={element.name}
-                title={element.title}
-                industry={element.industry}
-                text={element.text}
-                dates={element.dates}
-                href={element.href}
-                key={element.id}
-              ></EmploymentCard>
-            );
-          })}
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
+
+      {/* Render the entire CareerSection component from employment.tsx */}
+      <CareerSection />
+
+      <Row className="justify-content-center mt-5">
         <Col xs={10}>
           <hr
             style={{

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../scss/custom.scss";
 import Navigation from "../components/header";
 import Home from "../components/home";
-import { Career } from "../components/employment";
+import CareerSection from "../components/employment"; // Updated import
 import TechStack from "../components/techstack";
 import Contacts from "../components/contacts";
 
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <TechStack />
 
       <section id="career"></section>
-      <Career />
+      <CareerSection /> {/* Updated component usage */}
 
 
 

@@ -1,90 +1,133 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { employment, otherEmployment } from "../data/employment";
-import { Figure, Card, CardGroup, Row, Col } from "react-bootstrap";
-import Badge from "react-bootstrap/Badge";
+import { employment } from "../data/employment"; // Removed otherEmployment as it's not used here anymore
+import { Card, Row, Col } from "react-bootstrap"; // Removed Figure, CardGroup, Badge as they might not be needed
+import { experienceSummary } from "../data/summary";
+import Image from "next/image";
 
-function EmploymentCard(item: {
-  icon: string;
-  name: string;
-  title: string[];
-  industry: string;
-  text: string;
-  dates: string;
-  href: string;
-}) {
+// New component for featured companies (IBM, PwC, BlueCloud)
+function FeaturedCompanies() {
+  const featured = employment.filter(item =>
+    item.name === "IBM" || item.name === "PwC" || item.name === "BlueCloud"
+  ).sort((a, b) => b.id - a.id); // Sort by id descending for newer first
+
   return (
-    <Card className="flex-fill" bg="card" text="white"  >
-      <Card.Header >
-        <Row className="justify-content-md-center">
-          <Col xs={12} md={3} className="justify-content-center" >
-            <a href={item.href}>
-              <Figure style={{ margin: "1rem" }}>
-                <Figure.Image src={item.icon} />
-              </Figure>
-            </a>
-          </Col>
-          <Col>
-            <h5 style={{ marginTop: "2rem" }}>{item.dates}</h5>
-            {item.title.map((name) => { return (<h2 className="title-names">{name}</h2>); })}
-          </Col>
-        </Row>
-      </Card.Header>
-      <Card.Body>{item.text}</Card.Body>
-    </Card >
-
-  );
-}
-
-function OtherEmploymentCard(employment: {
-  title: string;
-  text: string;
-  href: string;
-}) {
-  return (
-    <Card bg="card" style={{ marginLeft: "2rem", marginRight: "2rem" }}>
-      <Card.Title className="text-center" style={{ margin: "1rem" }}>
-        {employment.title}
-      </Card.Title>
-      <Card.Body className="text-center" style={{ margin: "2rem" }}>
-        {employment.text}
-      </Card.Body>
-    </Card>
-  );
-}
-
-function Career() {
-  return <Container
-    className="d-flex flex-column justify-content-center page-container"
-    fluid
-  >
-    <Row className="justify-content-center" style={{ marginTop: "6rem" }}>
-      <Col className="justify-content-center" xs={12} md={10}>
-        <h1 className="section-title">My Career</h1>
-      </Col>
-    </Row>
-    <Row className="justify-content-center" >
-      <Col xs={12} md={10}>
-        <CardGroup>
-          <Row xs={1} md={2} >
-            {employment.sort((a, b) => {
-              if (a.id < b.id) {
-                return -1;
-              } else if (b.id < a.id) {
-                return 1;
-              }
-              return 0;
-            }).map((item) => (
-              <Col key={item.id} style={{ marginTop: "1rem" }} className="d-flex align-items-stretch">
-                {EmploymentCard(item)}
+    <Container className="my-5">
+      {featured.map((item) => (
+        <Card key={item.id} bg="card" text="white" className="mb-4">
+          <Card.Body>
+            <Row className="align-items-center">
+              <Col xs={12} md={2} className="text-center">
+                {item.icon && (
+                  <Image
+                    src={`/${item.icon}`}
+                    alt={item.name}
+                    width={80} // Larger icon for featured companies
+                    height={80}
+                    className="mb-3 mb-md-0"
+                  />
+                )}
               </Col>
-            ))}
-
-          </Row>
-        </CardGroup>
-      </Col>
-    </Row>
-  </Container>
+              <Col xs={12} md={10}>
+                <Card.Title className="mb-1">
+                  {item.name} - {item.title.join(", ")}
+                </Card.Title>
+                <Card.Text>{item.text}</Card.Text>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      ))}
+    </Container>
+  );
 }
 
-export { OtherEmploymentCard, EmploymentCard, Career };
+// New component for other companies (single row, logo and title only)
+function OtherCompanies() {
+  const others = employment.filter(item =>
+    item.name !== "IBM" && item.name !== "PwC" && item.name !== "BlueCloud"
+  ).sort((a, b) => b.id - a.id); // Sort by id descending for newer first
+
+  return (
+    <Container className="my-5">
+      <Row className="justify-content-center g-2"> {/* Changed g-4 to g-2 */}
+        {others.map((item) => (
+          <Col key={item.id} xs={4} md={2} className="text-center d-flex flex-column align-items-center"> {/* Changed xs={6} md={3} to xs={4} md={2} */}
+            {item.icon && (
+              <Image
+                src={`/${item.icon}`}
+                alt={item.name || item.industry}
+                width={48} // Smaller icon for other companies
+                height={48}
+                className="mb-2"
+              />
+            )}
+            <div className="text-white text-nowrap" style={{ fontSize: "0.8em" }}> {/* Changed font-size from 0.9em to 0.8em */}
+              {item.title.join(", ")}
+            </div>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+}
+
+
+// New component to combine both lists (formerly CompanyListSummary)
+function EmploymentSummary() {
+  return (
+    <>
+      <Row className="justify-content-center">
+        <Col xs={12} md={10}>
+          <h2 className="section-title mb-4">Work History</h2>
+        </Col>
+      </Row>
+      <Row className="justify-content-center"> {/* Added Row for centering and width */}
+        <Col xs={12} md={8} className="mx-auto"> {/* Centered and 2/3 width */}
+          <FeaturedCompanies />
+        </Col>
+      </Row>
+      <OtherCompanies />
+    </>
+  );
+}
+
+
+// New component for experience highlights
+function ExperienceHighlights() {
+  return (
+    <Container className="my-5">
+      <Row className="justify-content-center">
+        <Col xs={12} md={10}>
+          <h2 className="section-title mb-4">Highlights</h2>
+          <ul>
+            {experienceSummary.map((highlight, index) => (
+              <li key={index} className="mb-2">
+                <p>{highlight}</p>
+              </li>
+            ))}
+          </ul>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
+
+
+// Main CareerSection component
+export default function CareerSection() {
+  return (
+    <Container fluid className="d-flex flex-column justify-content-center page-container">
+      <Row className="justify-content-center" style={{ marginTop: "6rem" }}>
+        <Col className="justify-content-center" xs={12} md={10}>
+          <h1 className="section-title">My Career</h1>
+        </Col>
+      </Row>
+
+      <ExperienceHighlights />
+      <EmploymentSummary /> {/* Using the new combined summary component */}
+
+      {/* Removed the detailed employment cards section */}
+    </Container>
+  );
+}

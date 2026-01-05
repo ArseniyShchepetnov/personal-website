@@ -1,23 +1,30 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-import { Row, Col } from "react-bootstrap";
+import Image from "react-bootstrap/Image"; // Use Image directly
+import { Row, Col, Badge } from "react-bootstrap"; // Added Badge
 import {
   techStackItems,
   otherTechStackItems,
-  mathTechStackItems,
+  // Removed mathTechStackItems
 } from "../data/techstack";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Card from "react-bootstrap/Card";
-import { Figure } from "react-bootstrap";
+import dynamic from "next/dynamic"; // Import dynamic from next/dynamic
 
+// Dynamically import TechStackWordCloud with SSR disabled
+const DynamicTechStackWordCloud = dynamic(() => import("./TechStackWordCloud"), { ssr: false });
+
+// Removed Figure import as it's no longer used for techStackItem
+
+// Unified techStackItem for rendering individual tech items
 function techStackItem(item: {
   id: number;
   name: string;
   src: string;
   description: string;
   url: string;
+  category: string; // Added category to item type
 }, height: string) {
   const tooltip = (
     <Tooltip id="tooltip">
@@ -26,131 +33,34 @@ function techStackItem(item: {
     </Tooltip>
   );
   return (
-    <a href={item.url}>
-      {/* <OverlayTrigger trigger="focus" placement="right" overlay={tooltip}>
-        <Card bg="light">
-          <Card.Img variant="top" src={item.src} />
-          <Card.Body>
-            <Card.Text>
-              {item.name}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </OverlayTrigger> */}
+    <a href={item.url} target="_blank" rel="noopener noreferrer" className="d-flex justify-content-center">
       <OverlayTrigger trigger="focus" placement="right" overlay={tooltip}>
-        <Figure className="flex flex-col justify-content-center">
-          <Figure.Image fluid style={{ height: height, width: height }} src={item.src} alt={item.description} />
-          <Figure.Caption >
-            <h5 className="tech-stack-item-caption">{item.name}</h5>
-          </Figure.Caption>
-        </Figure>
+        <Image fluid
+          style={{
+            maxHeight: '4rem', // Keep original height for consistent sizing
+            maxWidth: '4rem',  // Keep original width for consistent sizing
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain',
+            backgroundColor: 'rgba(255,255,255,0.1)', // Keep background color if desired, or remove
+            padding: '0.5rem', // Add some padding around the image if it was tight
+            borderRadius: '0.25rem', // Optional: slight rounding for the image itself
+          }}
+          src={`/${item.src}`} // Ensure correct path for images
+          alt={item.name} // Use item.name for alt text
+        />
       </OverlayTrigger>
-    </a >
-  );
-}
-
-function techStackGrid(
-  array: {
-    id: number;
-    name: string;
-    src: string;
-    description: string;
-    url: string;
-  }[]
-) {
-  return (
-    <Row className="justify-content-center">
-
-      {array.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        } else if (b.name < a.name) {
-          return 1;
-        }
-        return 0;
-      }).map((element) => {
-        return (
-          <Col xs={3} md={2} key={element.id}>
-            {techStackItem(element, "5rem")}
-          </Col>
-        );
-      })}
-    </Row>
-  );
-}
-
-
-function mlStackGrid(
-  array: {
-    id: number;
-    name: string;
-    src: string;
-    description: string;
-    url: string;
-  }[]
-) {
-  return (
-    <Row className="justify-content-center">
-
-      {array.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        } else if (b.name < a.name) {
-          return 1;
-        }
-        return 0;
-      }).map((element) => {
-        return (
-          <Col xs={3} md={3} key={element.id} style={{ margin: "1rem" }}>
-            {techStackItem(element, "20rem")}
-          </Col>
-        );
-      })}
-    </Row>
-  );
-}
-
-function otherTechStackItemsToGrid(
-  array: {
-    id: number;
-    name: string;
-    description: string;
-    src: string;
-    url: string;
-  }[]
-) {
-  return (
-    <Card className="text-bg-card">
-      <Card.Body>
-        <Row>
-          {array.map((element) => {
-            const tooltip = (
-              <Tooltip id="tooltip">
-                <strong>{element.name}</strong>
-                <p>{element.description}</p>
-              </Tooltip>
-            );
-            return (
-              <Col key={element.id}>
-                <a href={element.url}>
-                  <OverlayTrigger
-                    trigger="focus"
-                    placement="right"
-                    overlay={tooltip}
-                  >
-                    <Image fluid src={element.src} alt={element.description} style={{ height: "3rem" }} />
-                  </OverlayTrigger>
-                </a>
-              </Col>
-            );
-          })}
-        </Row>
-      </Card.Body>
-    </Card>
+    </a>
   );
 }
 
 export default function TechStack() {
+  // Combine all tech stack items and add default category if missing
+  const allTechStackItems = [
+    ...techStackItems,
+    ...otherTechStackItems,
+  ].map(item => ({ ...item, category: item.category || "Miscellaneous" })); // Ensure all items have a category
+
   return (
     <Container
       className="d-flex flex-column justify-content-center page-container"
@@ -162,75 +72,26 @@ export default function TechStack() {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col xs={12} md={10} style={{ marginTop: "1rem" }}>
-          <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
-            Development
-          </h3>
-          <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"These are not the only tools that I use. I continuously develop myself..."}</h4>
-          <Card className="text-bg-card d-flex flex-col">
-            <Card.Body>{techStackGrid(techStackItems)}</Card.Body>
-          </Card>
+        <Col xs={12} md={8} className="mx-auto">
+          <DynamicTechStackWordCloud />
         </Col>
       </Row>
 
-      <Row className="justify-content-center" style={{ marginTop: "1rem" }}>
-        <h3 className="text-center text-section-title">Other</h3>
-      </Row>
-      <Row className="justify-content-center" style={{ marginTop: "1rem" }}>
-        <Col xs={12} md={6}>
-          {otherTechStackItemsToGrid(otherTechStackItems)}
-        </Col>
-      </Row>
-
-      <Row className="justify-content-center">
-
-
-        <Col xs={12} md={8}>
-          <h3 className="text-center text-intro" style={{ fontSize: "2rem", marginTop: "3rem" }}>
-            Machine Learning
-          </h3>
-          <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"The most exciting part..."}</h4>
-          <Container className="text-bg-card">
-            <Row>
-              <Col xs={12} md={6}>
-                <Figure style={{ margin: "3rem" }}>
-                  <Figure.Image src={"ai.png"} />
-                </Figure>
-              </Col>
-              <Col xs={12} md={6}>
-                <Container style={{ margin: "3rem" }}>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Large Language Models</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Bayesian Networks</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Digital Signal Processing</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Reinforcement Learning</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Computer Vision</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }} >Tree Ensembles</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>Statistics</h2>
-                  <h2 className="tech-stack-item-caption" style={{ marginTop: "1rem" }}>...</h2>
-                </Container>
-              </Col>
-
+      <Col xs={12} md={8} className="mx-auto" style={{ marginTop: "1rem" }}> {/* Changed md={10} to md={8} */}
+        <Card bg="card" text="white" className="d-flex flex-col">
+          <Card.Body>
+            <Row className="justify-content-evenly g-2"> {/* Changed justify-content-start to justify-content-evenly */}
+              {allTechStackItems
+                .sort((a, b) => a.name.localeCompare(b.name)) // Sort items alphabetically
+                .map(element => (
+                  <Col xs={4} sm={3} md={2} lg={1} key={element.id} className="text-center d-flex flex-column align-items-center mb-3">
+                    {techStackItem(element, "4rem")} {/* Adjusted height for better fit */}
+                  </Col>
+                ))}
             </Row>
-          </Container>
-
-
-
-
-
-        </Col>
-        {/* 
-        <Col xs={12} md={10} style={{ marginTop: "1rem" }}>
-          <h3 className="text-center text-intro" style={{ fontSize: "2rem" }}>
-            Development
-          </h3>
-          <h4 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"These are not the only tools that I use. I continuously develop myself..."}</h4>
-          <Card className="text-bg-card d-flex flex-col">
-            <Card.Body>{mlStackGrid(mathTechStackItems)}</Card.Body>
-          </Card>
-        </Col> */}
-
-      </Row>
-
+          </Card.Body>
+        </Card>
+      </Col>
     </Container>
   );
 }

@@ -14,15 +14,11 @@ export default function Home() {
     <Container
       className="text-intro d-flex flex-column justify-content-center page-container"
       fluid
-      style={{ paddingTop: "8vh" }}
+      style={{ minHeight: "100vh" }} // Set minimum height to 100vh
     >
       <Row className="justify-content-center">
-        <Col xs={0} md={3}>
-          <Figure className="text-center">
-            <Figure.Image src={"me.png"} />
-          </Figure>
-        </Col>
-        <Col xs={12} md={5} >
+        {/* Removed the Figure component displaying me.png */}
+        <Col xs={12} md={8} > {/* Adjusted md size from 5 to 8 */}
 
           <h1 className="text-center">
             {myName}
@@ -32,20 +28,12 @@ export default function Home() {
 
           <h3 className="text-center" style={{ color: "grey", marginBottom: "3rem" }}>{"I am"}</h3>
 
-
-          <Container id="experience-type" className="justify-content-center">
-            <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Data Scientist</span>
+          <Container className="d-flex flex-wrap justify-content-center gap-2 mb-3"> {/* Added flex-wrap and gap for spacing */}
+            <span style={{ fontSize: "1.2rem" }}>Data Scientist</span>
+            <span style={{ fontSize: "1.2rem" }}>Data Engineer</span>
+            <span style={{ fontSize: "1.2rem" }}>Machine Learning Engineer</span>
+            <span style={{ fontSize: "1.2rem" }}>AI Engineer</span>
           </Container>
-
-          <Container id="experience-type" className="justify-content-center">
-            <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Data Engineer</span>
-          </Container>
-
-          <Container id="experience-type" className="justify-content-center">
-            <span id="experience-type-span" className="square border border-primary bg-dark rounded-pill" >Machine Learning Engineer</span>
-          </Container>
-
-          <h3 className="text-center" style={{ color: "grey", marginTop: "3rem" }}>{"with Master's Degree in Theoretical Physics."}</h3>
 
         </Col>
       </Row >

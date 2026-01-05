@@ -16,15 +16,14 @@ export default function Navigation() {
     <Navbar
       expand="md"
       fixed="top"
-      bg="dark"
-      variant="dark"
+      className="navbar-custom" // Added custom class
       style={{ height: "10vh" }}
     >
       <Container >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           id="responsive-navbar-nav"
-          style={{ backgroundColor: "dark", borderRadius: "1rem" }}
+          style={{ backgroundColor: "rgba(10, 25, 47, 0.9)", borderRadius: "1rem" }} // Updated background color
         >
           <Nav className="me-auto">
             <Nav.Link href="#home">
